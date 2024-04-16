@@ -1,0 +1,238 @@
+{
+    "Title": "Sunday School",
+    "Credits": "Created by Adam Smith (amsmith@ucsc.edu).\nModified by Brian Hudick (bhudick@ucsc.edu)",
+    "InitialLocation": "Church",
+    "Locations": {
+        "Church": {
+            "Body": "You awake on a pew inside a massive church, you don't remember why you're here.\nYou try to get up to look for a way out.",
+            "Choices": [
+                {
+                    "Text": "Get Up",
+                    "Target": "Altar"
+                }
+            ]
+        },
+
+        "Altar": {
+            "Body": "You stand at the altar of the nave. In front of you, there stands the pews before\nthe grand door, it's locked. Behind the altar is a stairwell that goes underground.",
+            "Choices": [
+                {
+                    "Text": "Descend Stairs",
+                    "Target": "Tunnel Complex"
+                }
+            ]
+        },
+
+        "Tunnel Complex": {
+            "Body": "You stand in a room with walls lined with stones. It smells musty and is lit by a single\nlantern hanging above you. There is a tunnel on either side of you and in front of you.",
+            "Choices": [
+                {
+                    "Text": "Ascend Stairs",
+                    "Target": "Altar"
+                },
+                {
+                    "Text": "Go Forward",
+                    "Target": "Living Space"
+                },
+                {
+                    "Text": "Go Left",
+                    "Target": "Hallway"
+                },
+                {
+                    "Text": "Go Right",
+                    "Target": "Dead End"
+                }
+            ]
+        },
+
+        "Dead End": {
+            "Body": "You stand at what appears to be a collapsed part of the tunnel. There's nothing of interest here.",
+            "Choices": [
+                {
+                    "Text": "Return to the fork",
+                    "Target": "Tunnel Complex"
+                }
+            ]
+        },
+
+        "Living Space": {
+            "Body": "You stand in what appears to be a common room. Dust cakes the furniture.\nThere are two doors on either side of the room.",
+            "Choices": [
+                {
+                    "Text": "Walk to tunnel",
+                    "Target": "Tunnel Complex"
+                },
+                {
+                    "Text": "Open Left Door",
+                    "Target": "Bathroom"
+                },
+                {
+                    "Text": "Open Right Door",
+                    "Target": "Dorms"
+                }
+            ]
+        },
+
+        "Bathroom": {
+            "Body": "You appear to be in a bathroom. Showers line either wall of the room, all with the curtains drawn. There appears to be a center drain, blood stains leading to each of the shower stalls. You feel uneasy and want to leave.",
+            "Choices": [
+                {
+                    "Text": "Leave Bathroom",
+                    "Target": "Living Space"
+                }
+            ]
+        },
+
+        "Dorms": {
+            "Body": "You walk into a room filled with broken beds. Some remain intact with something under the covers. You don't dare make a sound nor draw the covers. You want to go leave.",
+            "Choices": [
+                {
+                    "Text": "Leave Dorms",
+                    "Target": "Living Space"
+                }
+            ]
+        },
+
+        "Hallway": {
+            "Body": "Before you is a grandeur hallway lined with pillars on either side. The\nhigh ceilings are ornamented with chandaliers. There are multiple doors each with different decorations.",
+            "Choices": [
+                {
+                    "Text": "Walk to tunnel",
+                    "Target": "Tunnel Complex"
+                },
+                {
+                    "Text": "Open Wood Door",
+                    "Target": "Wine Cellar"
+                },
+                {
+                    "Text": "Open Porcelain Door",
+                    "Target": "Library"
+                },
+                {
+                    "Text": "Open Marble Door",
+                    "Target": "Stage"
+                }
+            ]
+        },
+
+        "Stage": {
+            "Body": "You gaze upon a grand stage. The curtains drawn, showlights lining the edge. You look upon the rows of empty seats. An empty audience, waiting for a show that will never start.",
+            "Choices": [
+                {
+                    "Text": "Return to Hallway",
+                    "Target": "Hallway"
+                },
+                {
+                    "Text": "Open Side Door",
+                    "Target": "Kitchen"
+                }
+            ]
+        },
+
+        "Kitchen": {
+            "Body": "The kitchen before you reeks of rotten meat. Dirty dishes fill the sink. A pot is filled with what you hope is tomato soup. ",
+            "Choices": [
+                {
+                    "Text": "Return to Stage",
+                    "Target": "Stage"
+                }
+            ]
+        },
+
+        "Wine Cellar": {
+            "Body": "You enter a musty wine cellar. There's a single shelf with empty wine bottles. One in particular is protruding in an unatural way.",
+            "Choices": [
+                {
+                    "Text": "Back to Hallway",
+                    "Target": "Hallway"
+                },
+                {
+                    "special": true,
+                    "Text": "Pull Bottle",
+                    "Target": "Hidden message"
+                }
+            ]
+        },
+
+        "Hidden message": {
+            "Body": "You pull the bottle. You faintly hear what sounds like furniture shifting. It sounds like it was nearby.",
+            "Choices": [
+                {
+                    "Text": "Continue",
+                    "Target": "Wine Cellar"
+                }
+            ],
+            "KeyLocation": [
+                {
+                "Append": "Library",
+                "AppendVal":{
+                    "Text": "Walk Down Stairs",
+                    "Target": "Hidden Room",
+                    "NewBody": "You enter a library. The shelves are lined with books. A stairwell stands across the room, descending into another tunnel. You contemplate exploring even deeper."
+                },
+                "PopVal":{
+                    "start": "Wine Cellar",
+                    "end": "Hidden Message"
+                },
+                "visited": false
+                }
+            ]
+        },
+
+
+
+        "Library": {
+            "Body": "You enter a library. It isn't very big. There are a lot of books caked with dust. One shelf in particular has a bunch of books at the foot of it. Nothing else of note is here.",
+            "Choices": [
+                {
+                    "Text": "Back to Hallway",
+                    "Target": "Hallway"
+                }
+            ]
+        },
+
+        "Hidden Room": {
+            "Body": "The stairwell leads to a dark room, the only light comes from the library above. In view there's a skeleton sitting at a table. Its fingers are coated in golden rings. Among the rings, something else catches your eye.",
+            "Choices": [
+                {
+                    "Text": "Back to Library",
+                    "Target": "Library"
+                },
+                {
+                    "special":true,
+                    "Text": "Pickup Key",
+                    "Target": "KeyLocation"
+                }
+            ]
+        },
+
+        "KeyLocation":{
+            "Body": "You pickup the key on the table, it's labeled 'entrance'. You feel that it opens the front door of the church.",
+            "Choices": [
+                {
+                    "Text": "Continue",
+                    "Target": "Hidden Room"
+                }
+            ],
+            "KeyLocation": [
+                {
+                "Append": "Altar",
+                "AppendVal":{
+                    "Text": "Leave Church",
+                    "Target": "EndGame",
+                    "NewBody": "You stand at the altar of the nave. In front of you, there stands the pews before\nthe grand door, you now hold the key to open it. You can still explore the catacombs beneath if you wish."
+                },
+                "PopVal":{
+                    "start": "Hidden Room",
+                    "end": "Key Location"
+                },
+                "visited": false
+                }
+            ]
+        },
+        
+        "EndGame": {
+            "Body": "You leave the churchgrounds. The night sky blankets the surrounding forest. A single path illumunated by street lamps leads throught the forest. You are left without a choice: you start down the path, unsure where you'll end up."
+        }
+    }
+}
